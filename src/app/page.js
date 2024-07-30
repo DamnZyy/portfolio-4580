@@ -1,113 +1,242 @@
-import Image from "next/image";
+'use client'
+import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+import { Home, HomeContent, HomeTitle, HomeExpertise, HomeIntroduction, HomeButton, HomeProfile, ProfileImage, BoldText } from '@/components/home';
+import { About, AboutContent, AboutName, AboutTitle, AboutInfo, AboutInfoTitle, AboutInfoDescription ,AboutFlexBox, AboutDetails,AboutDetailsTitle, AboutDetailsDescription } from '@/components/about';
+import { Service, ServiceContent, ServiceMark, ServiceTitle, ServiceDescription, ServiceFlexBox, ServiceOfferBorder, ServiceOfferNumber, ServiceOfferTitle, ServiceOfferDescription } from '@/components/service';
+import { TechnologyStacks, TechStackContent, TechStackTitle, TechStackDescription, TechStackFlexBox, TechStackBorder } from '@/components/tech-stack';
+import { Footer, FooterContent, FooterMark, FooterTitle, FooterDescription, FooterButton, FooterSeparator, FooterCredits, FooterSocial } from '@/components/footer';
+
+import { RiNextjsFill } from "react-icons/ri";
+import { SiMysql, SiTailwindcss } from "react-icons/si";
+import { FaReact, FaGitAlt, FaGithub, FaNodeJs, FaHtml5, FaCss3Alt, FaJsSquare, FaBootstrap, FaBars, FaFacebook, FaInstagram, FaTwitter} from 'react-icons/fa';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+export default function Page() {
+
+    const [showShadow, setShowShadow] = useState(false);
+    const [showNavbar, setShowNavbar] = useState(false);
+    const aboutRef = useRef(null);
+    const serviceRef = useRef(null);
+    const portfolioRef = useRef(null);
+    const contactRef = useRef(null);
+
+    useEffect(() => {
+    function handleScroll() {
+        if (window.scrollY > 0) {
+            setShowShadow(true);
+        } else {
+            setShowShadow(false);
+        }
+    }
+        window.addEventListener('scroll', handleScroll);
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+      useEffect(() => {
+        AOS.init({ once: true });
+      }, [])
+    const Menubar = () => {
+        setShowNavbar(!showNavbar);
+    }
+    function aboutFunc(){
+      aboutRef.current?.scrollIntoView({behavior: 'smooth' })
+    }
+    
+    return(
+        <div className='select-none snap-none bg-default'>
+            <nav className={`w-full py-3 px-2 z-50 fixed bg-default transition-all ${showShadow ? (showNavbar ? "" : "shadow-xl") : ''}`}>
+                <div className="flex relative justify-between max-w-7xl m-auto p-3">
+                    <span className='text-lg font-semibold flex items-center'>
+                        <span className='tracking-widest'>Xy</span>
+                        <span className='tracking-widest text-danger'>lar</span>
+                    </span>
+                    <ul className='bg-default justify-center items-center gap-11 text-lg hidden md:flex'>
+                        <li onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' })}}>Home</li>
+                        <li onClick={() => { aboutRef.current?.scrollIntoView({behavior: 'smooth' })}}>About</li>
+                        <li onClick={() => { const element = serviceRef.current;if (element) {const scrollPosition = element.getBoundingClientRect().top + window.scrollY - 50;window.scrollTo({top: scrollPosition, behavior: 'smooth'});}}}>Services</li>
+                        <li onClick={() => { const element = portfolioRef.current;if (element) {const scrollPosition = element.getBoundingClientRect().top + window.scrollY - 50;window.scrollTo({top: scrollPosition, behavior: 'smooth'});}}}>Portfolio</li>
+                    </ul>
+                    <div className='flex justify-center items-center'>
+                        <button className={`hidden md:flex border-[1px] rounded-full px-6 py-1 hover:bg-black hover:text-white hover:shadow-md border-black transition-all`} onClick={() => contactRef.current?.scrollIntoView({behavior: 'smooth', block: 'end' })}>Let's talk</button>
+                        <button className="block md:hidden" onClick={Menubar}>
+                            <FaBars className="h-6"/>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            <ul className={`bg-default z-10 fixed flex flex-col shadow-xl justify-center items-center gap-11 text-lg py-10 mt-14 left-0 w-screen md:w-0 md:flex md:py-0 md:mt-0 md:relative md:justify-center md:flex-row -translate-y-0 transition-all  ${showNavbar ? "-translate-y-0 " : "-translate-y-[21rem]"}`}>
+                <li onClick={() => {Menubar(); window.scrollTo({ top: 0, behavior: 'smooth' })}}>Home</li>
+                <li onClick={() => {Menubar(); aboutFunc}}>About</li>
+                <li onClick={() => {Menubar(); const element = serviceRef.current;if (element) {const scrollPosition = element.getBoundingClientRect().top + window.scrollY - 100;window.scrollTo({top: scrollPosition, behavior: 'smooth'});}}}>Services</li>
+                <li onClick={() => {Menubar(); const element = portfolioRef.current;if (element) {const scrollPosition = element.getBoundingClientRect().top + window.scrollY - 50;window.scrollTo({top: scrollPosition, behavior: 'smooth'});}}}>Portfolio</li>
+            </ul>
+
+            <Home>
+              <HomeContent>
+                <HomeTitle>Front-End Developer Crafting Digital Solutions</HomeTitle>
+                <HomeExpertise>
+                  <p>DESIGN</p>
+                  <p>DEVELOPMENT</p>
+                  <p>WEBFLOW</p>
+                </HomeExpertise>
+                <HomeIntroduction>
+                  <p >Hi, I&apos;m <BoldText> Jessie Bartolome</BoldText>. I turn ideas into reality with expertise in <BoldText>
+                  React, Node.js, MongoDB</BoldText>, and more. Explore my portfolio for a glimpse into my coding journey.</p>
+                </HomeIntroduction>
+                <HomeButton onClick={aboutFunc}>Learn more &rarr;</HomeButton>
+              </HomeContent>
+              <HomeProfile>
+                <ProfileImage image="/Cat.png"></ProfileImage>
+              </HomeProfile>
+            </Home>
+
+            <About func={aboutRef}>
+              <AboutContent>
+                <AboutName>Jessie Bartolome</AboutName>
+                <AboutTitle>Leading Web Development and Design.</AboutTitle>
+              </AboutContent>
+              <AboutInfo>
+                <AboutInfoTitle>Passionate Front-End Developer with a mission to craft digital experiences that not only meet but exceed expectations.</AboutInfoTitle>
+                <AboutInfoDescription>With a love for the front-end realms of web development, I embark on a journey to bring ideas to life through code.</AboutInfoDescription>
+                <AboutFlexBox>
+                  <AboutDetails>
+                    <AboutDetailsTitle>BASED IN</AboutDetailsTitle>
+                    <AboutDetailsDescription>Philippines</AboutDetailsDescription>
+                  </AboutDetails>
+                  <AboutDetails>
+                    <AboutDetailsTitle>EXPERIENCE</AboutDetailsTitle>
+                    <AboutDetailsDescription>2+ years</AboutDetailsDescription>
+                  </AboutDetails>
+                  <AboutDetails>
+                    <AboutDetailsTitle>SPECIALIZATION</AboutDetailsTitle>
+                    <AboutDetailsDescription>Web Development</AboutDetailsDescription>
+                  </AboutDetails>
+                </AboutFlexBox>
+              </AboutInfo>
+            </About>
+
+            <section className='flex max-w-7xl m-auto flex-col'>
+
+                {/* <div className='flex justify-center items-center mt-20 mb-36' data-aos="zoom-in-up">
+                    <table>
+                        <tr className='hidden xl:block'>
+                            <td className={`border-[1px] px-24 py-1 text-xl border-black`}>
+                                <div className='flex flex-col items-center justify-center'>
+                                    <p className=' font-bold text-6xl mb-2'>2+</p>
+                                    <p className='font-semibold'>YEARS OF EXPERIENCE</p>
+                                </div>
+                            </td>
+                            <td className={`border-[1px] px-24 py-9 text-xl bg-black border-black`}>
+                                <div className={`flex flex-col items-center justify-center text-light`}>
+                                    <p className=' font-bold text-6xl mb-2'>30+</p>
+                                    <p className='font-semibold'>PROJECT COMPLETED</p>
+                                </div>
+                            </td>
+                            <td className={`border-[1px] px-24 py-1 text-xl border-black`}>
+                                <div className='flex flex-col items-center justify-center relative'>
+                                    <p className=' font-bold text-6xl mb-2'>20+</p>
+                                    <p className='font-semibold'>HAPPY CLIENTS</p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tbody className='block xl:hidden m-5 sm:m-5 md:m-5 xl:m-0'>
+                            <tr>
+                                <td className={`border-2 px-24 py-9 text-xl border-black`}>
+                                    <div className='flex flex-col items-center justify-center text-center'>
+                                        <p className=' font-bold text-6xl mb-2'>2+</p>
+                                        <p className='font-semibold'>YEARS OF EXPERIENCE</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={`border-2 md:px-80 xl:px-24 py-9 text-xl bg-black border-black`}>
+                                    <div className={`flex flex-col items-center justify-center text-default text-center`}>
+                                        <p className=' font-bold text-6xl mb-2'>30+</p>
+                                        <p className='font-semibold'>PROJECT COMPLETED</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={`border-2 px-24 py-9 text-xl border-black`}>
+                                    <div className='flex flex-col items-center justify-center text-center relative'>
+                                        <p className=' font-bold text-6xl mb-2'>20+</p>
+                                        <p className='font-semibold'>HAPPY CLIENTS</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> */}
+            </section>
+
+            <Service func={serviceRef}>
+              <ServiceContent>
+                <ServiceMark>What i offer</ServiceMark>
+                <ServiceTitle>Design, Development and Content. All in one.</ServiceTitle>
+                <ServiceDescription>Unifying the Essence of Design, Development, and Compelling Content to Forge a Singular, Powerful Digital Experience.</ServiceDescription>
+              </ServiceContent>
+              <ServiceFlexBox>
+                <ServiceOfferBorder>
+                  <ServiceOfferNumber>01</ServiceOfferNumber>
+                  <ServiceOfferTitle>Web design</ServiceOfferTitle>
+                  <ServiceOfferDescription>Tailored to individual client sepecifications, our high-end web design services deliver visually captivating and intuitive websites, ensuring impactful outcomes.</ServiceOfferDescription>
+                </ServiceOfferBorder>
+                <ServiceOfferBorder>
+                  <ServiceOfferNumber>02</ServiceOfferNumber>
+                  <ServiceOfferTitle>Web Development</ServiceOfferTitle>
+                  <ServiceOfferDescription>Striking and functional websites, powered by Webflow. Easily customizable and manageable, no prior web development experience required.</ServiceOfferDescription>
+                </ServiceOfferBorder>
+                <ServiceOfferBorder>
+                  <ServiceOfferNumber>03</ServiceOfferNumber>
+                  <ServiceOfferTitle>Content</ServiceOfferTitle>
+                  <ServiceOfferDescription>Full-service solutions for businesses to strengthen their online presence. Quality, engaging content that boosts conversions, optimized for search engines.</ServiceOfferDescription>
+                </ServiceOfferBorder>
+              </ServiceFlexBox>
+            </Service>
+            
+            <TechnologyStacks>
+              <TechStackContent>
+                <TechStackTitle>Technology Stacks</TechStackTitle>
+                <TechStackDescription>Here's a glimpse into the tools and technologies I wield to build powerful and scalable applications.</TechStackDescription>
+              </TechStackContent>
+              <TechStackFlexBox>
+                <TechStackBorder><FaHtml5 className='text-6xl text-orange-500' /></TechStackBorder>
+                <TechStackBorder><FaCss3Alt className='text-6xl text-blue-700' /></TechStackBorder>
+                <TechStackBorder><FaJsSquare className='text-6xl text-yellow-400' /></TechStackBorder>
+                <TechStackBorder><FaReact className='text-6xl text-cyan-400' /></TechStackBorder>
+                <TechStackBorder><RiNextjsFill className='text-6xl text-black' /></TechStackBorder>
+                <TechStackBorder><FaNodeJs className='text-6xl text-green-500' /></TechStackBorder>
+                <TechStackBorder><SiMysql className='text-6xl text-black'/></TechStackBorder>
+                <TechStackBorder><FaGithub className='text-6xl text-black-500' /></TechStackBorder>
+                <TechStackBorder><FaGitAlt className='text-6xl text-orange-600'/></TechStackBorder>
+                <TechStackBorder><SiTailwindcss className='text-6xl text-cyan-500'/></TechStackBorder>
+                <TechStackBorder><FaBootstrap className='text-6xl text-purple-600' /></TechStackBorder>
+              </TechStackFlexBox>
+            </TechnologyStacks>
+
+            <Footer func={contactRef}>
+              <FooterContent>
+                <FooterMark>Let's talk</FooterMark>
+                <FooterTitle>Connect and Collaborate</FooterTitle>
+                <FooterDescription>Let's not just code, let's create your website together.</FooterDescription>
+              </FooterContent>
+              <FooterButton>GET IN TOUCH</FooterButton>
+              <FooterSeparator>
+                <FooterCredits>JESSIE BARTOLOME</FooterCredits>
+                <FooterSocial>
+                  <FaFacebook className='text-3xl' />
+                  <FaGithub className='text-3xl'/>
+                  <FaInstagram className='text-3xl'/>
+                  <FaTwitter className='text-3xl'/>
+                </FooterSocial>
+              </FooterSeparator>
+            </Footer>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    )
 }
