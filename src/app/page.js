@@ -62,7 +62,7 @@ export default function Page() {
                         <li onClick={() => { const element = portfolioRef.current;if (element) {const scrollPosition = element.getBoundingClientRect().top + window.scrollY - 50;window.scrollTo({top: scrollPosition, behavior: 'smooth'});}}}>Portfolio</li>
                     </ul>
                     <div className='flex justify-center items-center'>
-                        <button className={`hidden md:flex border-[1px] rounded-full px-6 py-1 hover:bg-black hover:text-white hover:shadow-md border-black transition-all`} onClick={() => contactRef.current?.scrollIntoView({behavior: 'smooth', block: 'end' })}>Let's talk</button>
+                        <button className={`hidden md:flex border-[1px] rounded-full px-6 py-1 hover:bg-black hover:text-white hover:shadow-md border-black transition-all`} onClick={() => contactRef.current?.scrollIntoView({behavior: 'smooth', block: 'end' })}>Let&apos;s talk</button>
                         <button className="block md:hidden" onClick={Menubar}>
                             <FaBars className="h-6"/>
                         </button>
@@ -121,60 +121,6 @@ export default function Page() {
               </AboutInfo>
             </About>
 
-            <section className='flex max-w-7xl m-auto flex-col'>
-
-                {/* <div className='flex justify-center items-center mt-20 mb-36' data-aos="zoom-in-up">
-                    <table>
-                        <tr className='hidden xl:block'>
-                            <td className={`border-[1px] px-24 py-1 text-xl border-black`}>
-                                <div className='flex flex-col items-center justify-center'>
-                                    <p className=' font-bold text-6xl mb-2'>2+</p>
-                                    <p className='font-semibold'>YEARS OF EXPERIENCE</p>
-                                </div>
-                            </td>
-                            <td className={`border-[1px] px-24 py-9 text-xl bg-black border-black`}>
-                                <div className={`flex flex-col items-center justify-center text-light`}>
-                                    <p className=' font-bold text-6xl mb-2'>30+</p>
-                                    <p className='font-semibold'>PROJECT COMPLETED</p>
-                                </div>
-                            </td>
-                            <td className={`border-[1px] px-24 py-1 text-xl border-black`}>
-                                <div className='flex flex-col items-center justify-center relative'>
-                                    <p className=' font-bold text-6xl mb-2'>20+</p>
-                                    <p className='font-semibold'>HAPPY CLIENTS</p>
-                                </div>
-                            </td>
-                        </tr>
-                        <tbody className='block xl:hidden m-5 sm:m-5 md:m-5 xl:m-0'>
-                            <tr>
-                                <td className={`border-2 px-24 py-9 text-xl border-black`}>
-                                    <div className='flex flex-col items-center justify-center text-center'>
-                                        <p className=' font-bold text-6xl mb-2'>2+</p>
-                                        <p className='font-semibold'>YEARS OF EXPERIENCE</p>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className={`border-2 md:px-80 xl:px-24 py-9 text-xl bg-black border-black`}>
-                                    <div className={`flex flex-col items-center justify-center text-default text-center`}>
-                                        <p className=' font-bold text-6xl mb-2'>30+</p>
-                                        <p className='font-semibold'>PROJECT COMPLETED</p>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className={`border-2 px-24 py-9 text-xl border-black`}>
-                                    <div className='flex flex-col items-center justify-center text-center relative'>
-                                        <p className=' font-bold text-6xl mb-2'>20+</p>
-                                        <p className='font-semibold'>HAPPY CLIENTS</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> */}
-            </section>
-
             <Service func={serviceRef}>
               <ServiceContent>
                 <ServiceMark>What i offer</ServiceMark>
@@ -203,7 +149,7 @@ export default function Page() {
             <TechnologyStacks>
               <TechStackContent>
                 <TechStackTitle>Technology Stacks</TechStackTitle>
-                <TechStackDescription>Here's a glimpse into the tools and technologies I wield to build powerful and scalable applications.</TechStackDescription>
+                <TechStackDescription>Here&apos;s a glimpse into the tools and technologies I wield to build powerful and scalable applications.</TechStackDescription>
               </TechStackContent>
               <TechStackFlexBox>
                 <TechStackBorder><FaHtml5 className='text-6xl text-orange-500' /></TechStackBorder>
@@ -222,9 +168,9 @@ export default function Page() {
 
             <Footer func={contactRef}>
               <FooterContent>
-                <FooterMark>Let's talk</FooterMark>
+                <FooterMark>Let&apos;s talk</FooterMark>
                 <FooterTitle>Connect and Collaborate</FooterTitle>
-                <FooterDescription>Let's not just code, let's create your website together.</FooterDescription>
+                <FooterDescription>Let&apos;s not just code, let&apos;s create your website together.</FooterDescription>
               </FooterContent>
               <FooterButton>GET IN TOUCH</FooterButton>
               <FooterSeparator>
