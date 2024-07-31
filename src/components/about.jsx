@@ -2,7 +2,7 @@ import React from 'react'
 
 export function About({children, func}) {
   return (
-    <div className='max-w-7xl m-auto flex justify-between pt-10 pb-28 sm:pt-32 flex-col medium:flex-row p-5' ref={func}>
+    <div className='max-w-7xl m-auto flex justify-between pt-10 pb-28 sm:pt-24 flex-col medium:flex-row p-5' ref={func}>
         {children}
     </div>
   )
@@ -23,7 +23,7 @@ export function AboutName({children}) {
 }
 export function AboutTitle({children}) {
     return (
-    <div className='font-bold text-4xl sm:text-5xl max-w-[400px] m-auto medium:m-0 text-center medium:text-left' data-aos="zoom-in-up">
+    <div className='font-bold text-3xl sm:text-4xl medium:text-5xl max-w-[400px] m-auto medium:m-0 text-center medium:text-left' data-aos="zoom-in-up">
         {children}
     </div>
     )
@@ -72,7 +72,7 @@ export function AboutDetailsTitle({children}) {
 }
 export function AboutDetailsDescription({children}) {
     return (
-    <div className='font-bold text-2xl pt-1'>
+    <div className='font-bold text-xl sm:text-2xl pt-1'>
         {children}
     </div>
     )

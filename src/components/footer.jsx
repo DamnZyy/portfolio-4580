@@ -55,14 +55,14 @@ export function FooterSeparator({children}) {
 }
 export function FooterCredits({children}) {
     return (
-    <div className=' text-center text-2xl font-bold'>
+    <div className=' text-center text-xl sm:text-2xl font-bold pb-2 sm:pl-5 sm:pb-0'>
         {children}
     </div>
     )
 }
 export function FooterSocial({children}) {
     return (
-    <div className='flex gap-5 pr-3'>
+    <div className='flex gap-5 sm:pr-5'>
         {children}
     </div>
     )

@@ -33,7 +33,8 @@ module.exports = {
         primary: ['Poppins', 'sans-serif']
       },
       screens: {
-        medium: '840px',
+        small: '450px',
+        medium: '840px'
       },
       boxShadow: {
         block: '0 8px 32px 0 rgba(19,48,125,0.35)',

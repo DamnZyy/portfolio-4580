@@ -16,7 +16,7 @@ export function TechStackContent({children}) {
 }
 export function TechStackTitle({children}) {
   return (
-    <div className='text-4xl sm:text-5xl font-semibold'>
+    <div className='text-3xl sm:text-4xl medium:text-5xl font-semibold'>
         {children}
     </div>
   )
@@ -37,7 +37,7 @@ export function TechStackFlexBox({children}) {
 }
 export function TechStackBorder({children}) {
     return(
-    <div className='border-[1px] border-black w-52 flex justify-center items-center py-5 rounded-md' data-aos="zoom-in-up">
+    <div className='border-[1px] border-black w-36 small:w-52 flex justify-center items-center py-4 small:py-5 rounded-md' data-aos="zoom-in-up">
         {children}
     </div>
     )

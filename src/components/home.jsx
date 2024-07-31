@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export function Home({children}) {
   return (
-    <div className='max-w-7xl m-auto py-28  grid grid-cols-1 gap-10 relative xl:grid-cols-2 xl:gap-1'>
+    <div className='max-w-7xl m-auto py-28  grid grid-cols-1 gap-10 relative xl:grid-cols-2 xl:gap-0'>
         {children}
     </div>
   )
@@ -17,7 +17,7 @@ export function HomeContent({children}) {
 }
 export function HomeTitle({children}) {
     return (
-    <div className='font-bold text-4xl max-w-[700px] sm:text-5xl text-center xl:text-start' data-aos="fade-down" data-aos-duration="1000">
+    <div className='font-bold max-w-[700px] text-3xl sm:text-4xl medium:text-5xl text-center xl:text-start' data-aos="fade-down" data-aos-duration="1000">
         {children}
     </div>
     )
@@ -31,7 +31,7 @@ export function HomeExpertise({children}) {
 }
 export function HomeIntroduction({children}) {
     return (
-    <div className='text-xl text-center xl:text-start max-w-[700px] px-5 xl:px-0' data-aos="fade-down" data-aos-duration="2000">
+    <div className='text-base sm:text-xl text-center xl:text-start max-w-[700px] px-5 xl:px-0' data-aos="fade-down" data-aos-duration="2000">
         {children}
     </div>
     )
@@ -52,12 +52,12 @@ export function HomeProfile({children}) {
 }
 export function ProfileImage({image}) {
     return (
-    <Image width={1000} height={1000} src={image} alt="profile" className='rounded-full w-[500px] border-8 p-1 border-black shadow-block' />
+    <Image width={1000} height={1000} src={image} alt="profile" className='rounded-full w-[500px] border-4 small:border-[7px] p-1 border-black shadow-block' />
     )
 }
 export function BoldText({children}) {
   return (
-    <span className='font-semibold'>
+    <span className='font-medium'>
         {children}
     </span>
   )
