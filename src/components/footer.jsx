@@ -23,7 +23,7 @@ export function FooterMark({children}) {
 }
 export function FooterTitle({children}) {
     return (
-    <div className='text-4xl md:text-6xl text-center font-semibold'>
+    <div className='text-4xl small:text-5xl md:text-6xl text-center font-semibold'>
         {children}
     </div>
     )
@@ -37,7 +37,7 @@ export function FooterDescription({children}) {
 }
 export function FooterButton({children}) {
     return (
-    <div className='flex justify-center items-center tracking-wide mt-12 mb-20 border-2 border-black rounded-full px-6 py-2 bg-black text-white hover:shadow-xl transition-all' data-aos="zoom-in-up" data-aos-once="false">
+    <div className='flex justify-center items-center tracking-wide mt-12 mb-20 border-2 border-black rounded-full px-6 py-2 bg-black text-white hover:shadow-xl transition-all'>
         {children}
     </div>
     )
@@ -55,7 +55,7 @@ export function FooterSeparator({children}) {
 }
 export function FooterCredits({children}) {
     return (
-    <div className=' text-center text-xl sm:text-2xl font-bold pb-2 sm:pl-5 sm:pb-0'>
+    <div className=' text-center text-2xl font-bold sm:pl-5'>
         {children}
     </div>
     )
