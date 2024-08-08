@@ -96,7 +96,7 @@ export default function Page() {
                 <HomeButton onClick={aboutFunc}>Learn more &rarr;</HomeButton>
               </HomeContent>
               <HomeProfile>
-                <ProfileImage image="/Cat.png"></ProfileImage>
+                <ProfileImage image="/Profile1.jpg"></ProfileImage>
               </HomeProfile>
             </Home>
 
